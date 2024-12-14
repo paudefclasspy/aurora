@@ -1,0 +1,224 @@
+<!-- Página del minijuego de preguntas -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minijuego de Preguntas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #faf3e0, #d0d0d0);
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        h1 {
+            margin: 0;
+            color: #606060;
+        }
+        .quiz-container {
+            margin: 20px auto;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .answer-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .answer-buttons button {
+            background-color: #b0b0b0;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            width: 45%;
+        }
+        .answer-buttons button:hover {
+            background-color: #9a9a9a;
+        }
+        .points-section {
+            margin: 20px auto;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .vouchers {
+            margin-top: 20px;
+        }
+        .voucher {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .voucher button {
+            background-color: #b0b0b0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .voucher button:hover {
+            background-color: #9a9a9a;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #666;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button-container a {
+            background-color: #b0b0b0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 5px;
+        }
+        .button-container a:hover {
+            background-color: #9a9a9a;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Minijuego de Preguntas</h1>
+        <p>Puntos: <span id="points">0</span></p>
+        <a href="index.html" style="position: absolute; top: 10px; right: 10px; color: #333;">Volver a la página principal</a>
+    </header>
+    <div class="quiz-container">
+        <!-- Pregunta 1 -->
+        <div class="question">
+            <p>¿Cuál es la capital de Francia?</p>
+        </div>
+        <div class="answer-buttons">
+            <button onclick="checkAnswer('A')">A. París</button>
+            <button onclick="checkAnswer('B')">B. Madrid</button>
+            <button onclick="checkAnswer('C')">C. Londres</button>
+            <button onclick="checkAnswer('D')">D. Berlín</button>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <div class="question">
+            <p>¿Cuál es el planeta más grande del sistema solar?</p>
+        </div>
+        <div class="answer-buttons">
+            <button onclick="checkAnswer('A')">A. Júpiter</button>
+            <button onclick="checkAnswer('B')">B. Saturno</button>
+            <button onclick="checkAnswer('C')">C. Marte</button>
+            <button onclick="checkAnswer('D')">D. Urano</button>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="question">
+            <p>¿Quién pintó la obra "La Última Cena"?</p>
+        </div>
+        <div class="answer-buttons">
+            <button onclick="checkAnswer('A')">A. Leonardo da Vinci</button>
+            <button onclick="checkAnswer('B')">B. Pablo Picasso</button>
+            <button onclick="checkAnswer('C')">C. Vincent van Gogh</button>
+            <button onclick="checkAnswer('D')">D. Michelangelo</button>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <div class="question">
+            <p>¿Cuál es el mayor río del mundo?</p>
+        </div>
+        <div class="answer-buttons">
+            <button onclick="checkAnswer('A')">A. Amazonas</button>
+            <button onclick="checkAnswer('B')">B. Nilo</button>
+            <button onclick="checkAnswer('C')">C. Misisipi-Misuri</button>
+            <button onclick="checkAnswer('D')">D. Yangtsé</button>
+        </div>
+    </div>
+
+    <div class="points-section" id="canjear-puntos">
+        <h2>Selecciona un vale para canjear tus puntos:</h2>
+        <div class="vouchers">
+            <div class="voucher">
+                <span>Vale 1: 100 puntos</span>
+                <button onclick="redeemVoucher(100)">Canjear</button>
+            </div>
+            <div class="voucher">
+                <span>Vale 2: 200 puntos</span>
+                <button onclick="redeemVoucher(200)">Canjear</button>
+            </div>
+            <div class="voucher">
+                <span>Vale 3: 300 puntos</span>
+                <button onclick="redeemVoucher(300)">Canjear</button>
+            </div>
+        </div>
+    </div>
+    <video autoplay loop id="backgroundMusic">
+        <source src="Baby I'm Yours.mp3" type="audio/mpeg">
+        Tu navegador no soporta la etiqueta de audio.
+    </video>
+    <footer>
+        <p>Con mucho amor, de alguien que siempre estará a tu lado. 💖</p>
+    </footer>
+    <script>
+        var points = localStorage.getItem('points') || 0;
+
+        function checkAnswer(answer) {
+            if (answer === 'A') {
+                points = parseInt(points) + 10;
+                alert('¡Correcto!');
+            } else {
+                alert('Incorrecto, intenta de nuevo.');
+            }
+            localStorage.setItem('points', points);
+            updatePoints();
+        }
+
+        function redeemVoucher(value) {
+            if (points >= value) {
+                points -= value;
+                alert('¡Vale canjeado!');
+            } else {
+                alert('No tienes suficientes puntos.');
+            }
+            localStorage.setItem('points', points);
+            updatePoints();
+        }
+
+        function updatePoints() {
+            document.getElementById('points').innerText = points;
+        }
+
+        var music = document.getElementById('backgroundMusic');
+        music.volume = 0.05; // Set volume to 50%
+
+        function playSong(url) {
+            window.open(url, '_blank');
+        }
+    </script>
+
+</body>
+</html>

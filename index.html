@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #faf3e0, #d0d0d0);
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            margin: 0;
+            color: #606060;
+        }
+        .message {
+            margin: 20px auto;
+            font-size: 1.2em;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .message img {
+            margin-top: 20px;
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .playlist {
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: left;
+        }
+        .playlist ul {
+            list-style: none;
+            padding: 0;
+        }
+        .playlist li {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .playlist button {
+            background-color: #b0b0b0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .playlist button:hover {
+            background-color: #9a9a9a;
+        }
+        .spotify-widget-container {
+            text-align: center;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #666;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button-container a {
+            background-color: #b0b0b0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 5px;
+        }
+        .button-container a:hover {
+            background-color: #9a9a9a;
+        }
+        .letter-container {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .love-letter {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+            max-width: 600px;
+            text-align: left;
+            margin: 20px auto;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        .love-letter img {
+            margin-top: 20px;
+            max-width: 40%;
+            border-radius: 10px;
+        }
+        .love-letter p {
+            margin-right: 259px; 
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Feliz Cumpleaños, Mi Amor ❤️</h1>
+    </header>
+    
+    <div class="letter-container" onclick="toggleLetter()">
+        <img src="https://img.icons8.com/?size=100&id=EFxDjlQr0y7b&format=png&color=000000" alt="Icono de sobre" class="fa-2x"  width="50" height="50"/>
+        <p>DAME CLICK!</p>
+    </div>
+    
+    
+    <div class="love-letter" id="loveLetter">
+        <img src="foto1.jpeg" alt="Imagen especial para tu mensaje" align="right">
+        <p>My Beloved [Name],</p>
+        <p>In the quiet moments of my day, my thoughts invariably drift to you. I can't help but marvel at the joy your presence brings into my life. Your laughter is the soundtrack that brightens my days, and your smile, the sun that dispels any shadows.</p>
+        <p>There's an ineffable comfort in being with you, a connection that goes beyond words. Your kindness and the way you make me feel cherished are the highlights of my existence. In your company, life feels not only bearable but beautiful.</p>
+        <p>Our journey together is a tapestry woven with shared moments, each one a precious thread in the fabric of our love story. You've become my home, the place where my heart feels safe, understood, and truly alive.</p>
+        <p>So here, in these few words, know that my love for you deepens with each passing day. You are the poetry my heart recites, the story my soul longs to tell. I cherish every chapter, eagerly anticipating the unwritten tales that lie ahead.</p>
+        <p>Always Yours,</p>
+        <p>-ChatGPT 3.5 Turbo</p>
+    </div>
+
+    <div class="playlist">
+        <h2>Escucha nuestra playlist en Spotify</h2>
+        <div class="spotify-widget-container">
+            <iframe src="https://open.spotify.com/embed/playlist/your_playlist_id_here" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
+    </div>
+    <div class="button-container">
+        <a href="minijuego.html">Jugar Minijuego de Preguntas</a>
+    </div>
+    <video autoplay loop id="backgroundMusic">
+        <source src="Baby I'm Yours.mp3" type="audio/mpeg">
+        Tu navegador no soporta la etiqueta de audio.
+    </video>
+    <footer>
+        <p>Con mucho amor, de alguien que siempre estará a tu lado. 💖</p>
+    </footer>
+    <script>
+        function toggleLetter() {
+            const letter = document.getElementById('loveLetter');
+            if (letter.style.display === "none" || letter.style.display === "") {
+                letter.style.display = "block";
+            } else {
+                letter.style.display = "none";
+            }
+        }
+        var music = document.getElementById('backgroundMusic');
+        music.volume = 0.05; // Set volume to 50%
+
+        function playSong(url) {
+            window.open(url, '_blank');
+        }
+            
+    </script>
+</body>
+</html>

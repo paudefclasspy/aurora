@@ -1,0 +1,108 @@
+<!-- Página de canje de puntos -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canjear Puntos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin: 0;
+            color: #d45d79;
+        }
+        .points-section {
+            margin: 20px auto;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .vouchers {
+            margin-top: 20px;
+        }
+        .voucher {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .voucher button {
+            background-color: #d45d79;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .voucher button:hover {
+            background-color: #a03f5e;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Canjear Puntos</h1>
+        <p>Puntos disponibles: <span id="points">0</span></p>
+    </header>
+    <div class="points-section">
+        <h2>Selecciona un vale para canjear tus puntos:</h2>
+        <div class="vouchers">
+            <div class="voucher">
+                <span>Vale 1: 100 puntos</span>
+                <button onclick="redeemVoucher(100)">Canjear</button>
+            </div>
+            <div class="voucher">
+                <span>Vale 2: 200 puntos</span>
+                <button onclick="redeemVoucher(200)">Canjear</button>
+            </div>
+            <div class="voucher">
+                <span>Vale 3: 300 puntos</span>
+                <button onclick="redeemVoucher(300)">Canjear</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Regresar al minijuego de preguntas <a href="minijuego.html">aquí</a>.</p>
+    </footer>
+
+    <script>
+        var points = parseInt(localStorage.getItem('points')) || 0;
+
+        function redeemVoucher(value) {
+            if (points >= value) {
+                points -= value;
+                alert('¡Vale canjeado!');
+            } else {
+                alert('No tienes suficientes puntos.');
+            }
+            localStorage.setItem('points', points);
+            updatePoints();
+        }
+
+        function updatePoints() {
+            document.getElementById('points').innerText = points;
+        }
+    </script>
+</body>
+</html>
