@@ -1,4 +1,3 @@
-<!-- Página del minijuego de preguntas -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,6 +52,10 @@
         .answer-buttons button:hover {
             background-color: #9a9a9a;
         }
+        .answer-buttons button:disabled {
+            background-color: #d3d3d3;
+            cursor: not-allowed;
+        }
         .points-section {
             margin: 20px auto;
             max-width: 600px;
@@ -105,6 +108,49 @@
         .button-container a:hover {
             background-color: #9a9a9a;
         }
+
+        /* Ventana emergente */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            z-index: 1000;
+            display: none;
+        }
+        .popup h2 {
+            color: #606060;
+        }
+        .popup button {
+            background-color: #b0b0b0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .popup button:hover {
+            background-color: #9a9a9a;
+        }
+
+        /* Fondo oscuro detrás de la ventana emergente */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -119,10 +165,10 @@
             <p>¿Cuál es la capital de Francia?</p>
         </div>
         <div class="answer-buttons">
-            <button onclick="checkAnswer('A')">A. París</button>
-            <button onclick="checkAnswer('B')">B. Madrid</button>
-            <button onclick="checkAnswer('C')">C. Londres</button>
-            <button onclick="checkAnswer('D')">D. Berlín</button>
+            <button onclick="checkAnswer('A', this, 1)">A. París</button>
+            <button onclick="checkAnswer('B', this, 1)">B. Madrid</button>
+            <button onclick="checkAnswer('C', this, 1)">C. Londres</button>
+            <button onclick="checkAnswer('D', this, 1)">D. Berlín</button>
         </div>
 
         <!-- Pregunta 2 -->
@@ -130,10 +176,10 @@
             <p>¿Cuál es el planeta más grande del sistema solar?</p>
         </div>
         <div class="answer-buttons">
-            <button onclick="checkAnswer('A')">A. Júpiter</button>
-            <button onclick="checkAnswer('B')">B. Saturno</button>
-            <button onclick="checkAnswer('C')">C. Marte</button>
-            <button onclick="checkAnswer('D')">D. Urano</button>
+            <button onclick="checkAnswer(2, 'A')">A. Júpiter</button>
+            <button onclick="checkAnswer(2, 'B')">B. Saturno</button>
+            <button onclick="checkAnswer(2, 'C')">C. Marte</button>
+            <button onclick="checkAnswer(2, 'D')">D. Urano</button>
         </div>
 
         <!-- Pregunta 3 -->
@@ -141,10 +187,10 @@
             <p>¿Quién pintó la obra "La Última Cena"?</p>
         </div>
         <div class="answer-buttons">
-            <button onclick="checkAnswer('A')">A. Leonardo da Vinci</button>
-            <button onclick="checkAnswer('B')">B. Pablo Picasso</button>
-            <button onclick="checkAnswer('C')">C. Vincent van Gogh</button>
-            <button onclick="checkAnswer('D')">D. Michelangelo</button>
+            <button onclick="checkAnswer(3, 'A')">A. Leonardo da Vinci</button>
+            <button onclick="checkAnswer(3, 'B')">B. Pablo Picasso</button>
+            <button onclick="checkAnswer(3, 'C')">C. Vincent van Gogh</button>
+            <button onclick="checkAnswer(3, 'D')">D. Michelangelo</button>
         </div>
 
         <!-- Pregunta 4 -->
@@ -152,27 +198,28 @@
             <p>¿Cuál es el mayor río del mundo?</p>
         </div>
         <div class="answer-buttons">
-            <button onclick="checkAnswer('A')">A. Amazonas</button>
-            <button onclick="checkAnswer('B')">B. Nilo</button>
-            <button onclick="checkAnswer('C')">C. Misisipi-Misuri</button>
-            <button onclick="checkAnswer('D')">D. Yangtsé</button>
+            <button onclick="checkAnswer(4, 'A')">A. Amazonas</button>
+            <button onclick="checkAnswer(4, 'B')">B. Nilo</button>
+            <button onclick="checkAnswer(4, 'C')">C. Misisipi-Misuri</button>
+            <button onclick="checkAnswer(4, 'D')">D. Yangtsé</button>
         </div>
+    </div>
     </div>
 
     <div class="points-section" id="canjear-puntos">
         <h2>Selecciona un vale para canjear tus puntos:</h2>
         <div class="vouchers">
             <div class="voucher">
-                <span>Vale 1: 100 puntos</span>
-                <button onclick="redeemVoucher(100)">Canjear</button>
+                <span>Vale 1: 100 puntos - Descuento del 10%</span>
+                <button onclick="redeemVoucher(0, 'Descuento del 10%')">Canjear</button>
             </div>
             <div class="voucher">
-                <span>Vale 2: 200 puntos</span>
-                <button onclick="redeemVoucher(200)">Canjear</button>
+                <span>Vale 2: 200 puntos - Envío gratuito</span>
+                <button onclick="redeemVoucher(0, 'Envío gratuito')">Canjear</button>
             </div>
             <div class="voucher">
-                <span>Vale 3: 300 puntos</span>
-                <button onclick="redeemVoucher(300)">Canjear</button>
+                <span>Vale 3: 400 puntos - Producto gratis</span>
+                <button onclick="redeemVoucher(0, 'Producto gratis')">Canjear</button>
             </div>
         </div>
     </div>
@@ -181,44 +228,90 @@
         Tu navegador no soporta la etiqueta de audio.
     </video>
     <footer>
+
+    <!-- Ventana emergente -->
+    <div class="popup-overlay" id="popup-overlay"></div>
+    <div class="popup" id="popup">
+        <h2 id="popup-title">¡Felicidades!</h2>
+        <p id="popup-message"></p>
+        <button onclick="closePopup()">Cerrar</button>
+    </div>
+
+    <footer>
         <p>Con mucho amor, de alguien que siempre estará a tu lado. 💖</p>
     </footer>
+
     <script>
-        var points = localStorage.getItem('points') || 0;
+       var points = parseInt(localStorage.getItem('points') || 0);
+        var answeredQuestions = JSON.parse(localStorage.getItem('answeredQuestions') || '{}');
 
-        function checkAnswer(answer) {
-            if (answer === 'A') {
-                points = parseInt(points) + 10;
-                alert('¡Correcto!');
-            } else {
-                alert('Incorrecto, intenta de nuevo.');
-            }
+        function checkAnswer(answer, button, questionId) {
+        if (answeredQuestions[questionId]) {
+            alert('Ya has respondido esta pregunta.');
+            return;
+        }
+
+        if (answer === 'A') {
+            points += 10;
+            alert('¡Correcto!');
+        } else {
+            alert('Incorrecto, intenta de nuevo.');
+        }
+
+        answeredQuestions[questionId] = true;
+        localStorage.setItem('answeredQuestions', JSON.stringify(answeredQuestions));
+        localStorage.setItem('points', points);
+        updatePoints();
+
+        const buttons = button.parentElement.querySelectorAll('button');
+        buttons.forEach(btn => btn.disabled = true);
+    }
+
+        function redeemVoucher(value, description) {
+        if (points >= value) {
+            points -= value;
             localStorage.setItem('points', points);
             updatePoints();
+            showPopup(`¡Has canjeado un vale por: ${description}!`);
+        } else {
+            showPopup('No tienes suficientes puntos para canjear este vale.');
         }
+    }
 
-        function redeemVoucher(value) {
-            if (points >= value) {
-                points -= value;
-                alert('¡Vale canjeado!');
-            } else {
-                alert('No tienes suficientes puntos.');
+    function showPopup(message) {
+        const popupMessage = document.getElementById('popup-message');
+        const popupOverlay = document.getElementById('popup-overlay');
+        const popup = document.getElementById('popup');
+
+        popupMessage.textContent = message;
+        popupOverlay.style.display = 'block';
+        popup.style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('popup-overlay').style.display = 'none';
+        document.getElementById('popup').style.display = 'none';
+    }
+    function updatePoints() {
+        document.getElementById('points').textContent = points;
+    }
+    window.onload = updatePoints;
+
+    // Inicializar puntos y deshabilitar botones de preguntas ya respondidas
+    document.addEventListener('DOMContentLoaded', () => {
+        updatePoints();
+        const buttons = document.querySelectorAll('.answer-buttons button');
+        buttons.forEach(button => {
+            const questionIdMatch = button.getAttribute('onclick').match(/,\s*this,\s*(\d+)/);
+            if (questionIdMatch) {
+                const questionId = parseInt(questionIdMatch[1]);
+                if (answeredQuestions[questionId]) {
+                    button.disabled = true;
+                }
             }
-            localStorage.setItem('points', points);
-            updatePoints();
-        }
-
-        function updatePoints() {
-            document.getElementById('points').innerText = points;
-        }
-
-        var music = document.getElementById('backgroundMusic');
-        music.volume = 0.05; // Set volume to 50%
-
-        function playSong(url) {
-            window.open(url, '_blank');
-        }
-    </script>
-
-</body>
-</html>
+        });
+    });
+    var music = document.getElementById('backgroundMusic');
+        music.volume = 0.05;
+</script>
+</body> </html>
