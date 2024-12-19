@@ -221,7 +221,7 @@
         var points = parseInt(localStorage.getItem('points') || 0);
         var answeredQuestions = JSON.parse(localStorage.getItem('answeredQuestions') || '{"0": false, "1": false, "2": false, "3": false}');
         var music = document.getElementById('backgroundMusic');
-        music.volume = 0.05; // Set volume to 50%
+        music.volume = 0.09; // Set volume to 50%
 
         function checkAnswer(answer, button, questionId) {
             if (answeredQuestions[questionId]) {
