@@ -70,57 +70,115 @@
             font-size: 0.8em;
             color: #666;
         }
+        .vouchers {
+            margin-top: 20px;
+        }
+        .voucher {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .voucher button {
+            background-color: #b0b0b0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .voucher button:hover {
+            background-color: #9a9a9a;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: rgba(255, 255, 255, 0.95);
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #d45d79; /* Border color */
+            border-radius: 10px;
+            width: 80%; /* Could be more or less, depending on screen size */
+            max-width: 500px; /* Max width */
+            text-align: center;
+        }
+
+        .close-button {
+            color: #d45d79; /* Close button color */
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover {
+            color: #a03f5e; /* Darker color on hover */
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Minijuego de Preguntas</h1>
         <p>Puntos: <span id="points">0</span></p>
-        <a href="index.html" style="position: absolute; top: 10px; right: 10px; color: #333;">Volver a la página principal</a>
+        <a href="index.html" style="position: absolute; top: 10px; right: 10px; background-color: #d3d3d3; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: background-color 0.3s;">Volver a la página principal</a>
     </header>
     <div class="quiz-container">
         <!-- Pregunta 1 -->
         <div class="question">
-            <p>¿Cuál es la capital de Francia?</p>
+            <p>¿Cuál es mi color favorito?</p>
         </div>
         <div class="answer-buttons">
-            <button onclick="checkAnswer('A', this, 0)">A. París</button>
-            <button onclick="checkAnswer('B', this, 0)">B. Madrid</button>
-            <button onclick="checkAnswer('C', this, 0)">C. Londres</button>
-            <button onclick="checkAnswer('D', this, 0)">D. Berlín</button>
+            <button onclick="checkAnswer('A', this, 0)">A. Rojo</button>
+            <button onclick="checkAnswer('B', this, 0)">B. Negro</button>
+            <button onclick="checkAnswer('C', this, 0)">C. Blanco</button>
+            <button onclick="checkAnswer('D', this, 0)">D. Plateado</button>
         </div>
 
         <!-- Pregunta 2 -->
         <div class="question">
-            <p>¿Cuál es el planeta más grande del sistema solar?</p>
+            <p>¿Cuál es mi anime favorito?</p>
         </div>
         <div class="answer-buttons">
-            <button onclick="checkAnswer('A', this, 1)">A. Júpiter</button>
-            <button onclick="checkAnswer('B', this, 1)">B. Saturno</button>
-            <button onclick="checkAnswer('C', this, 1)">C. Marte</button>
-            <button onclick="checkAnswer('D', this, 1)">D. Urano</button>
+            <button onclick="checkAnswer('A', this, 1)">A. Bleach</button>
+            <button onclick="checkAnswer('B', this, 1)">B. Cowboy Bebop</button>
+            <button onclick="checkAnswer('C', this, 1)">C. Berserk</button>
+            <button onclick="checkAnswer('D', this, 1)">D. Inazuma Eleven</button>
         </div>
 
         <!-- Pregunta 3 -->
         <div class="question">
-            <p>¿Quién pintó la obra "La Última Cena"?</p>
+            <p>¿Cuanto me mide el brazo?</p>
         </div>
         <div class="answer-buttons">
-            <button onclick="checkAnswer('A', this, 2)">A. Leonardo da Vinci</button>
-            <button onclick="checkAnswer('B', this, 2)">B. Pablo Picasso</button>
-            <button onclick="checkAnswer('C', this, 2)">C. Vincent van Gogh</button>
-            <button onclick="checkAnswer('D', this, 2)">D. Michelangelo</button>
+            <button onclick="checkAnswer('A', this, 2)">A. 42</button>
+            <button onclick="checkAnswer('B', this, 2)">B. 41</button>
+            <button onclick="checkAnswer('C', this, 2)">C. 39</button>
+            <button onclick="checkAnswer('D', this, 2)">D. 44</button>
         </div>
 
         <!-- Pregunta 4 -->
         <div class="question">
-            <p>¿Cuál es el mayor río del mundo?</p>
+            <p>¿Cuánto me mide el pito?</p>
         </div>
         <div class="answer-buttons">
-            <button onclick="checkAnswer('A', this, 3)">A. Amazonas</button>
-            <button onclick="checkAnswer('B', this, 3)">B. Nilo</button>
-            <button onclick="checkAnswer('C', this, 3)">C. Misisipi-Misuri</button>
-            <button onclick="checkAnswer('D', this, 3)">D. Yangtsé</button>
+            <button onclick="checkAnswer('A', this, 3)">A. 17</button>
+            <button onclick="checkAnswer('B', this, 3)">B. 25</button>
+            <button onclick="checkAnswer('C', this, 3)">C. 33</button>
+            <button onclick="checkAnswer('D', this, 3)">D. 11</button>
         </div>
     </div>
 
@@ -128,27 +186,42 @@
         <h2>Selecciona un vale para canjear tus puntos:</h2>
         <div class="vouchers">
             <div class="voucher">
-                <span>Vale 1: 100 puntos - Descuento del 10%</span>
-                <button onclick="redeemVoucher(100, 'Descuento del 10%')">Canjear</button>
+                <span>200 puntos - 1 hora de eat pussy</span>
+                <button onclick="redeemVoucher(200, '1 hora de eat pussy')">Canjear</button>
             </div>
             <div class="voucher">
-                <span>Vale 2: 200 puntos - Envío gratuito</span>
-                <button onclick="redeemVoucher(200, 'Envío gratuito')">Canjear</button>
+                <span>200 puntos - 1 hora de masaje</span>
+                <button onclick="redeemVoucher(200, '1 hora de masaje')">Canjear</button>
             </div>
             <div class="voucher">
-                <span>Vale 3: 400 puntos - Producto gratis</span>
-                <button onclick="redeemVoucher(400, 'Producto gratis')">Canjear</button>
+                <span>400 puntos - Estar SIN camiseta en TODAS las videollamadas</span>
+                <button onclick="redeemVoucher(400, 'Estar SIN camiseta en TODAS las videollamadas')">Canjear</button>
             </div>
         </div>
     </div>
+    <video autoplay loop id="backgroundMusic">
+        <source src="Baby I'm Yours.mp3" type="audio/mpeg">
+        Tu navegador no soporta la etiqueta de audio.
+    </video>
 
     <footer>
         <p>Con mucho amor, de alguien que siempre estará a tu lado. 💖</p>
     </footer>
 
+    <!-- Modal for voucher redemption -->
+    <div id="voucherModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>¡Felicidades!</h2>
+            <p id="voucherDescription"></p>
+        </div>
+    </div>
+
     <script>
         var points = parseInt(localStorage.getItem('points') || 0);
         var answeredQuestions = JSON.parse(localStorage.getItem('answeredQuestions') || '{"0": false, "1": false, "2": false, "3": false}');
+        var music = document.getElementById('backgroundMusic');
+        music.volume = 0.05; // Set volume to 50%
 
         function checkAnswer(answer, button, questionId) {
             if (answeredQuestions[questionId]) {
@@ -157,7 +230,7 @@
             }
 
             if (answer === 'A') {
-                points += 10;
+                points += 100;
                 alert('¡Correcto!');
             } else {
                 alert('Incorrecto, intenta de nuevo.');
@@ -177,10 +250,19 @@
                 points -= value;
                 localStorage.setItem('points', points);
                 updatePoints();
-                alert(`¡Has canjeado un vale por: ${description}!`);
+                showModal(`¡Has canjeado un vale por: ${description}!`);
             } else {
                 alert('No tienes suficientes puntos para canjear este vale.');
             }
+        }
+
+        function showModal(description) {
+            document.getElementById('voucherDescription').innerText = description;
+            document.getElementById('voucherModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('voucherModal').style.display = 'none';
         }
 
         function updatePoints() {
@@ -206,7 +288,3 @@
     </script>
 </body>
 </html>
-    var music = document.getElementById('backgroundMusic');
-        music.volume = 0.05;
-</script>
-</body> </html>
